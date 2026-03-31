@@ -1,0 +1,80 @@
+{
+  "deckName": "Broken Vietnamese Core Phrases",
+  "cards": [
+    {
+      "id": "card-001",
+      "viet": "Em mệt quá.",
+      "pronunciation": "em met qua",
+      "english": "I am very tired.",
+      "cantonese": "我好攰。",
+      "example": "Hôm nay em mệt quá, em muốn ngủ sớm.",
+      "exampleMeaning": "I am very tired today, I want to sleep early.",
+      "brokenCue": "Short home phrase. Good when you want to say how you feel quickly.",
+      "notes": "Use naturally at home. You do not need to overbuild the sentence.",
+      "tags": ["daily", "feeling"],
+      "upvotes": 2,
+      "downvotes": 0,
+      "level": "learning"
+    },
+    {
+      "id": "card-002",
+      "viet": "Anh đói rồi.",
+      "pronunciation": "anh doi zoi",
+      "english": "I am hungry now.",
+      "cantonese": "我而家肚餓。",
+      "example": "Anh đói rồi, mình ăn gì đây?",
+      "exampleMeaning": "I am hungry now, what should we eat?",
+      "brokenCue": "Very common. Good for daily life and easy to remember.",
+      "notes": "You can swap anh or em depending on who is speaking.",
+      "tags": ["daily", "food"],
+      "upvotes": 1,
+      "downvotes": 0,
+      "level": "new"
+    },
+    {
+      "id": "card-003",
+      "viet": "Đợi em một chút.",
+      "pronunciation": "doi em mot chut",
+      "english": "Wait for me a moment.",
+      "cantonese": "等我一陣。",
+      "example": "Đợi em một chút, em đang thay đồ.",
+      "exampleMeaning": "Wait for me a moment, I am changing clothes.",
+      "brokenCue": "Useful when moving around the house and you need a little time.",
+      "notes": "Common and practical home phrase.",
+      "tags": ["daily", "timing"],
+      "upvotes": 1,
+      "downvotes": 0,
+      "level": "learning"
+    },
+    {
+      "id": "card-004",
+      "viet": "Em không hiểu.",
+      "pronunciation": "em khong hieu",
+      "english": "I do not understand.",
+      "cantonese": "我唔明。",
+      "example": "Nói chậm chút được không? Em không hiểu.",
+      "exampleMeaning": "Can you speak a bit slower? I do not understand.",
+      "brokenCue": "A survival phrase. Very useful when speaking broken Vietnamese.",
+      "notes": "Pair this with asking the other person to speak slower.",
+      "tags": ["survival", "communication"],
+      "upvotes": 3,
+      "downvotes": 0,
+      "level": "mastered"
+    },
+    {
+      "id": "card-005",
+      "viet": "Nói chậm thôi.",
+      "pronunciation": "noi cham thoi",
+      "english": "Speak slowly.",
+      "cantonese": "講慢啲。",
+      "example": "Anh nghe không kịp, nói chậm thôi.",
+      "exampleMeaning": "I cannot follow, speak slowly.",
+      "brokenCue": "Useful when you want simple speech and less stress.",
+      "notes": "Direct and practical. Great for real conversation.",
+      "tags": ["survival", "communication"],
+      "upvotes": 2,
+      "downvotes": 0,
+      "level": "learning"
+    }
+  ]
+}

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vietnamese Phrase Studio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>Vietnamese Phrase Studio</h1>
+        <p>Practice common spoken Vietnamese with a simple, editable deck.</p>
+      </div>
+
+      <section class="panel compact">
+        <h2>Deck</h2>
+        <div class="button-grid">
+          <button id="loadStarterBtn" class="primary">Load starter deck</button>
+          <button id="newDeckBtn">New deck</button>
+          <label class="file-button">
+            Import JSON / MD
+            <input id="fileInput" type="file" accept=".json,.md,.markdown,text/plain,application/json" />
+          </label>
+        </div>
+        <div class="button-grid top-gap">
+          <button id="saveJsonBtn">Download JSON</button>
+          <button id="saveMdBtn">Download MD</button>
+          <button id="backupBtn">Download backup</button>
+        </div>
+        <p id="statusText" class="status">Ready.</p>
+      </section>
+
+      <section class="panel compact">
+        <h2>Study controls</h2>
+        <div class="field-row two-up">
+          <label>
+            Study mode
+            <select id="studyModeSelect">
+              <option value="meaning-to-viet">Meaning → Vietnamese</option>
+              <option value="viet-to-meaning">Vietnamese → Meaning</option>
+              <option value="mixed">Mixed</option>
+            </select>
+          </label>
+          <label>
+            Filter
+            <select id="difficultyFilter">
+              <option value="all">All cards</option>
+              <option value="new">New</option>
+              <option value="learning">Learning</option>
+              <option value="mastered">Mastered</option>
+            </select>
+          </label>
+        </div>
+        <div class="field-row two-up">
+          <label>
+            Search
+            <input id="searchInput" type="text" placeholder="Search phrase, English, Cantonese..." />
+          </label>
+          <label>
+            Tag
+            <input id="tagFilterInput" type="text" placeholder="daily, baby, food" />
+          </label>
+        </div>
+        <div class="button-grid top-gap">
+          <button id="shuffleBtn">Shuffle</button>
+          <button id="prevBtn">Previous</button>
+          <button id="nextBtn">Next</button>
+          <button id="flipBtn" class="primary">Flip card</button>
+        </div>
+      </section>
+
+      <section class="panel compact">
+        <h2>Quick phrase helper</h2>
+        <div class="field-row">
+          <label>
+            English idea
+            <input id="quickEnglishInput" type="text" placeholder="I am tired" />
+          </label>
+        </div>
+        <div class="field-row">
+          <label>
+            Broken Vietnamese attempt
+            <input id="quickBrokenInput" type="text" placeholder="Em met" />
+          </label>
+        </div>
+        <div class="field-row">
+          <label>
+            Notes
+            <textarea id="quickNotesInput" rows="3" placeholder="When do you say it? Who says it?"></textarea>
+          </label>
+        </div>
+        <button id="quickAddBtn">Add as new card</button>
+      </section>
+    </aside>
+
+    <main class="main-content">
+      <section class="study-card panel">
+        <div class="card-top-row">
+          <div>
+            <div class="eyebrow">Current deck</div>
+            <h2 id="deckTitle">Broken Vietnamese Core Phrases</h2>
+          </div>
+          <div class="stats-wrap">
+            <div class="stat-box"><span>Total</span><strong id="totalCardsStat">0</strong></div>
+            <div class="stat-box"><span>Visible</span><strong id="visibleCardsStat">0</strong></div>
+            <div class="stat-box"><span>Card</span><strong id="cardPositionStat">0 / 0</strong></div>
+          </div>
+        </div>
+
+        <div class="study-face" id="studyFace">
+          <div class="face front-face" id="frontFace"></div>
+          <div class="face back-face hidden" id="backFace"></div>
+        </div>
+
+        <div class="study-actions">
+          <button id="speakBtn">Speak Vietnamese</button>
+          <button id="easyBtn">Mark easy</button>
+          <button id="learningBtn">Mark learning</button>
+          <button id="newBtn">Mark new</button>
+          <button id="upvoteBtn">👍 Upvote</button>
+          <button id="downvoteBtn">👎 Downvote</button>
+        </div>
+      </section>
+
+      <section class="workspace-grid">
+        <section class="panel editor-panel">
+          <div class="section-head">
+            <h2>Card editor</h2>
+            <div class="inline-actions">
+              <button id="addCardBtn">Add blank card</button>
+              <button id="cloneCardBtn">Clone card</button>
+              <button id="deleteCardBtn" class="danger">Delete card</button>
+            </div>
+          </div>
+
+          <div class="field-row two-up">
+            <label>
+              ID
+              <input id="cardIdInput" type="text" />
+            </label>
+            <label>
+              Tags
+              <input id="tagsInput" type="text" placeholder="daily, feeling" />
+            </label>
+          </div>
+
+          <div class="field-row two-up">
+            <label>
+              Vietnamese
+              <input id="vietInput" type="text" />
+            </label>
+            <label>
+              Pronunciation
+              <input id="pronunciationInput" type="text" placeholder="em met qua" />
+            </label>
+          </div>
+
+          <div class="field-row two-up">
+            <label>
+              English meaning
+              <input id="englishInput" type="text" />
+            </label>
+            <label>
+              Cantonese meaning
+              <input id="cantoneseInput" type="text" />
+            </label>
+          </div>
+
+          <div class="field-row two-up">
+            <label>
+              Example sentence
+              <textarea id="exampleInput" rows="3"></textarea>
+            </label>
+            <label>
+              Example meaning
+              <textarea id="exampleMeaningInput" rows="3"></textarea>
+            </label>
+          </div>
+
+          <div class="field-row two-up">
+            <label>
+              Broken speaking cue
+              <textarea id="brokenCueInput" rows="3" placeholder="Say it short and simple. Useful when tired."></textarea>
+            </label>
+            <label>
+              Notes
+              <textarea id="notesInput" rows="3"></textarea>
+            </label>
+          </div>
+
+          <div class="field-row three-up">
+            <label>
+              Level
+              <select id="levelSelect">
+                <option value="new">New</option>
+                <option value="learning">Learning</option>
+                <option value="mastered">Mastered</option>
+              </select>
+            </label>
+            <label>
+              Upvotes
+              <input id="upvotesInput" type="number" min="0" step="1" />
+            </label>
+            <label>
+              Downvotes
+              <input id="downvotesInput" type="number" min="0" step="1" />
+            </label>
+          </div>
+
+          <div class="button-grid top-gap">
+            <button id="applyChangesBtn" class="primary">Apply changes</button>
+            <button id="resetEditorBtn">Reset editor</button>
+          </div>
+        </section>
+
+        <section class="panel translator-panel">
+          <div class="section-head">
+            <h2>Translator helper</h2>
+            <div class="inline-actions">
+              <button id="copyCurrentBtn">Copy current Vietnamese</button>
+              <button id="fillTranslatorBtn">Send card to helper</button>
+            </div>
+          </div>
+
+          <p class="translator-note">This stays on the same page. It is a research helper, not an automatic translation service. Paste text, compare meanings, and build your own speaking-focused notes.</p>
+
+          <div class="field-row two-up">
+            <label>
+              Vietnamese text
+              <textarea id="translatorSource" rows="5" placeholder="Paste Vietnamese here"></textarea>
+            </label>
+            <label>
+              Cantonese / English notes
+              <textarea id="translatorTarget" rows="5" placeholder="Write your meaning, pronunciation, or quick notes here"></textarea>
+            </label>
+          </div>
+
+          <div class="translator-tools">
+            <div class="helper-card">
+              <h3>Pronunciation helper</h3>
+              <p>Type a rough sound guide, such as <strong>em met qua</strong>, and refine it into your own memory cue.</p>
+              <button id="copyPronunciationBtn">Copy pronunciation from card</button>
+            </div>
+            <div class="helper-card">
+              <h3>Common speaking prompts</h3>
+              <ul>
+                <li>How do I say this in very simple spoken Vietnamese?</li>
+                <li>What is the short casual version?</li>
+                <li>What would a partner say at home?</li>
+                <li>What words can I drop and still be understood?</li>
+              </ul>
+            </div>
+            <div class="helper-card">
+              <h3>Manual research links</h3>
+              <p>These open only if you choose. The app itself stays on one page.</p>
+              <div class="link-list">
+                <a id="googleTranslateLink" href="#" target="_blank" rel="noreferrer">Google Translate</a>
+                <a id="youglishLink" href="#" target="_blank" rel="noreferrer">YouGlish Vietnamese</a>
+                <a id="forvoLink" href="#" target="_blank" rel="noreferrer">Forvo pronunciation</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="panel browser-panel">
+        <div class="section-head">
+          <h2>Deck browser</h2>
+          <div class="inline-actions">
+            <button id="exportVisibleBtn">Export visible subset</button>
+          </div>
+        </div>
+        <div id="cardList" class="card-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
