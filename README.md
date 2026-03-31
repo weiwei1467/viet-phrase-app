@@ -22,7 +22,7 @@ Upload this whole folder to your GitHub repository:
 6. Select the `main` branch and the `/ (root)` folder.
 7. Save.
 8. Wait a minute, then open your site at:
-   `https://YOUR-USERNAME.github.io/REPOSITORY-NAME/`
+   `[https://weiwei1467.github.io/viet-phrase-app/](https://weiwei1467.github.io/viet-phrase-app/)`
 
 ## Recommended deck format
 
